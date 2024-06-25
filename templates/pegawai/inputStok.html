@@ -1,0 +1,33 @@
+{% include 'headerPegawai.html' %}
+
+<div class="container-fluid d-flex justify-content-center align-items-center full-height">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Form Input Stok</h1>
+                <form action="/inputStok" method="post">
+                    <div class="mb-3">
+                      <label for="stok_awal" class="form-label">Jumlah Stok Awal</label>
+                      <input type="text" class="form-control" required name="stok_awal" id="stok_awal">
+                    </div>
+                    <div class="mb-3">
+                      <label for="stok_akhir" class="form-label">Jumlah Stok Akhir </label>
+                      <input type="text" class="form-control" required name="stok_akhir" id="stok_akhir">
+                    </div>
+                    <div class="mb-3">
+                      <label for="tanggal" class="form-label">Tanggal Input Stok</label>
+                      <input type="date" class="form-control" required name="tanggal" id="tanggal">
+                    </div>
+                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+
+
+
+{% include 'footerPegawai.html' %}

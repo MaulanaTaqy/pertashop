@@ -1,0 +1,87 @@
+{% include 'headerAdmin.html' %}
+
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Detail Stok</h1>
+
+        <a href="printStok.php?start_date=<?= $start ?>&end_date=<?= $end ?>"
+            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" target="_blank"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+    <div class="card shadow mb-4">
+
+
+
+
+
+
+        </form>
+    </div>
+
+    <!-- Page Heading -->
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Laporan Stok Pegawai</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+                        <tr>
+                            <th>No</th>
+                            <th>Stok Awal (Liter)</th>
+                            <th>Stok Akhir (Liter)</th>
+                            <th>Tanggal Input Stok</th>
+                            <th>Aksi</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Sisa Stok BBM</th>
+                            <th colspan="4">{{stok[-1].stok_akhir}} Liter</th>
+
+                        </tr>
+                    </tfoot>
+                    {% for item in stok %}
+                    <tbody>
+
+                        <tr>
+
+                            <th scope="row">{{loop.index}}</th>
+                            <th> {{item.stok_awal}}</th>
+                            <th> {{item.stok_akhir}}</th>
+                            <th> {{item.tanggal}}</th>
+                            <th>
+                                <div class="my-2"></div>
+                                <a href="/editStok/{{item._id}}" class="btn btn-warning btn-icon-split">
+                                    <span class="text">Edit</span>
+                                </a> / <a href="/deleteStok/{{item._id}}" onclick="return confirm('Yakin ?');"
+                                    class="btn btn-danger btn-icon-split">
+                                    <span class="text">Hapus</span>
+                                </a>
+
+                            </th>
+
+                        </tr>
+
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        {% include 'footerAdmin.html' %}

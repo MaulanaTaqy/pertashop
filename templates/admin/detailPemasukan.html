@@ -1,0 +1,88 @@
+{% include 'headerAdmin.html' %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Detail Pemasukan</h1>
+
+        <a href="printPemasukan.php?start_date=<?= $start ?>&end_date=<?= $end ?>"
+            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" target="_blank"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+
+
+
+
+        </form>
+    </div>
+
+    <!-- Page Heading -->
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Pemasukan Pegawai</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+                        <tr>
+                            <th>No</th>
+                            <th>Jumlah Pemasukan</th>
+                            <th>Tanggal Pemasukan</th>
+                            <th>Detail Pemasukan</th>
+                            <th>Aksi</th>
+                            
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th colspan="4">{{total_pemasukan}}</th>
+
+                        </tr>
+                    </tfoot>
+                    {% for item in pemasukan %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <th>
+                                {{item.pemasukan|rupiah}}
+                            </th>
+                            <th>
+                                {{item.tanggal}}
+                            </th>
+                            <th>
+                                {{item.detail}}
+                            </th>
+                            <th>
+                                <div class="my-2"></div>
+                                <a href="/editPemasukan/{{item._id}}" class="btn btn-warning btn-icon-split">
+                                    <span class="text">Edit</span>
+                                </a>
+                                /
+                                <a href="/deletePemasukan/{{item._id}}" onclick="return confirm('Yakin ?');" class="btn btn-danger btn-icon-split">
+                                    <span class="text">Hapus</span>
+                                </a>
+                            </th>
+                          
+
+                        </tr>
+
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        {% include 'footerAdmin.html' %}

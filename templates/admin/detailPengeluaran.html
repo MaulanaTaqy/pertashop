@@ -1,0 +1,88 @@
+{% include 'headerAdmin.html' %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Detail Pengeluaran</h1>
+
+        <a href="printPengeluaran.php?start_date=<?= $start ?>&end_date=<?= $end ?>"
+            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" target="_blank"><i
+                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    </div>
+
+
+
+
+
+        </form>
+    </div>
+
+    <!-- Page Heading -->
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Tabel Pengeluaran Pegawai</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+
+                        <tr>
+                            <th>No</th>
+                            <th>Jumlah Pengeluaran</th>
+                            <th>Tanggal Pengeluaran</th>
+                            <th>Detail Pengeluaran</th>
+                            <th>Aksi</th>
+                            
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <th colspan="4">{{total_pengeluaran}}</th>
+                            
+                        </tr>
+                    </tfoot>
+                    {% for item in pengeluaran %}
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <th>
+                              {{item.pengeluaran|rupiah}}
+                            </th>
+                            <th>
+                                {{item.tanggal}}
+                            </th>
+                            <th>
+                                {{item.detail}}
+                            </th>
+                            <th>
+                                <div class="my-2"></div>
+                                <a href="/editPengeluaran/{{item._id}}" class="btn btn-warning btn-icon-split">
+                                    <span class="text">Edit</span>
+                                </a>
+                                /
+                                <a href="/deletePengeluaran/{{item._id}}" onclick="return confirm('Yakin ?');" class="btn btn-danger btn-icon-split">
+                                    <span class="text">Hapus</span>
+                                </a>
+                            </th>
+                          
+
+                        </tr>
+
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        {% include 'footerAdmin.html' %}

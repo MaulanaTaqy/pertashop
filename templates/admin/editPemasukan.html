@@ -1,0 +1,34 @@
+{% include 'headerAdmin.html' %}
+
+<div class="container-fluid d-flex justify-content-center align-items-center full-height">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Form Edit Setoran</h1>
+                <form action="/editPemasukan/{{data[0]._id}}" method="post">
+                    <input type="text" value="{{data[0]._id}}" name="_id" id="" hidden>
+                    <div class="form-group">
+                        <label for="jum_pemasukan">Jumlah Setoran (Rp)</label>
+                        <input type="text" class="form-control"  value="{{data[0].pemasukan}}" required name="pemasukan" id="pemasukan">
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal">Tanggal Pemasukan</label>
+                        <input type="date" class="form-control" value="{{data[0].tanggal}}" required name="tanggal" id="tanggal">
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">Detail Pemasukan</label>
+                        <input type="text" class="form-control" value="{{data[0].detail}}" required name="detail" id="detail">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+
+
+
+{% include 'footerAdmin.html' %}
